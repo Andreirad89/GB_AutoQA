@@ -13,7 +13,7 @@ public class TreangleTest {
         int actualResult = triangle.calculatePerimetr(); //вызыввем метод который хотим проверить
         assertEquals(12,actualResult); // сравниваем желаемый результат с актуальным
     }
-
+    @Test
     void checkAreaTriangle() {
         Triangle triangle=new Triangle(3,4,5); //готовим данные
         double actualResult = triangle.areaTriangle(); //вызыввем метод который хотим проверить
