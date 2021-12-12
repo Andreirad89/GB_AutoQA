@@ -1,4 +1,4 @@
-package org.example;
+package WorkHome2_4;
 
 
 import org.junit.jupiter.api.Test;
