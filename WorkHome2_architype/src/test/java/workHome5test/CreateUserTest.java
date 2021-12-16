@@ -1,5 +1,6 @@
 package workHome5test;
 
+import com.github.javafaker.Faker;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,11 +15,15 @@ import java.util.concurrent.TimeUnit;
 
 public class CreateUserTest extends BasicTest{
 
+    private final Faker faker = new Faker();
+
     @Test
     void CreareUserTest() {
+        String newemail = new Faker().internet().emailAddress();
+
         webDriver.get(url);
         webDriver.findElement(By.xpath("//a[contains(@class, 'login')]")).click();
-        webDriver.findElement(By.id("email_create")).sendKeys("poppy8257@getmail.lt");
+        webDriver.findElement(By.id("email_create")).sendKeys(newemail);
         webDriver.findElement(By.name("SubmitCreate")).click();
         webDriver.findElement(By.id("uniform-id_gender1")).click();
         webDriver.findElement(By.id("customer_firstname")).sendKeys("Test");
