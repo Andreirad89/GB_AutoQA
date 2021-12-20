@@ -4,16 +4,19 @@ import WorkHome6.Pages.ContactUsPage;
 import WorkHome6.Pages.LoginPages;
 import WorkHome6.Pages.ProductPage;
 import com.github.javafaker.Faker;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import jdk.jfr.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import workHome5test.BasicTest;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+
+@DisplayName("Тесты магазина одежды")
 public class ShopWithoutPageObjectTest extends BasicTest {
     private final String username = "poppy8257@getmail.lt";
     private final String password = "qwerty123456";
@@ -21,6 +24,8 @@ public class ShopWithoutPageObjectTest extends BasicTest {
 
     @Test
     @DisplayName("Изменение имени в профиле")
+    @Description("В этом тесте мы меняем имя и проверяем, что оно корректно изменилось")
+    @Severity(SeverityLevel.BLOCKER)
     void changeFirstNameTest() {
         String newname = faker.name().firstName();
         webDriver.get("http://automationpractice.com/index.php?controller=authentication&back=my-account");
@@ -56,6 +61,8 @@ public class ShopWithoutPageObjectTest extends BasicTest {
 
     @Test
     @DisplayName("Изменение фамилии профиля")
+    @Description("В этом тесте мы меняем фамилию и проверяем, чтио оно корректно изменилось")
+    @Severity(SeverityLevel.BLOCKER)
     void changeLastNameTest() {
         String newlastname = faker.name().lastName();
 
@@ -94,6 +101,8 @@ public class ShopWithoutPageObjectTest extends BasicTest {
 
     @Test
     @DisplayName("Положить товар в корзину")
+    @Description("В этом тесте ищем блузку и ложим ее в корзину, после проверяем")
+    @Severity(SeverityLevel.CRITICAL)
     void AddShopCartTest() {
             webDriver.get("http://automationpractice.com/index.php?controller=authentication&back=my-account");
             new LoginPages(webDriver).Login(username,password);
@@ -120,6 +129,8 @@ public class ShopWithoutPageObjectTest extends BasicTest {
 
     @Test
     @DisplayName("Отправка сообщения+загрузка файла")
+    @Description("в этом тесте отправялем отзыв, прикладывая файл о товаре")
+    @Severity(SeverityLevel.CRITICAL)
     void MessageAndUploadFileTest() {
         webDriver.get("http://automationpractice.com/index.php?controller=authentication&back=my-account");
         new LoginPages(webDriver).Login(username,password);
@@ -145,6 +156,8 @@ public class ShopWithoutPageObjectTest extends BasicTest {
 
     @Test
     @DisplayName("Поиск")
+    @Description("в этом тесте ищем товар в поиске, и проверяем что результат найден")
+    @Severity(SeverityLevel.CRITICAL)
     void SearchTest() {
         webDriver.get("http://automationpractice.com/index.php?controller=authentication&back=my-account");
         //webDriver.findElement(By.id("email")).sendKeys(username);

@@ -6,6 +6,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.concurrent.TimeUnit;
+
 public class AddShopingCartTest extends BasicTest{
     @Test
     void AddShopingCartTest() {
@@ -18,10 +20,11 @@ public class AddShopingCartTest extends BasicTest{
 
 
         Actions actions = new Actions(webDriver);
-        actions.moveToElement(webDriver.findElement(By.xpath("//*[@class='product-name' and contains(text(),'Blouse')]")))
+        actions.moveToElement(webDriver.findElement(By.xpath("//a[@class='product-name' and contains(.,'Blouse')]")))
                 .build().perform();
 
-        webDriver.findElement(By.xpath("//*[@id=\"center_column\"]/ul/li[2]/div/div[2]/div[2]/a[1]/span")).click();
+
+        webDriver.findElement(By.xpath(".//*[text()='Add to cart']")).click();
 
         new WebDriverWait(webDriver, 8)
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@class=\"icon-ok\"]")));

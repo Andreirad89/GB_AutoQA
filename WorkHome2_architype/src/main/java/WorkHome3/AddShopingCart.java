@@ -25,7 +25,7 @@ public class AddShopingCart {
         actions.moveToElement(webDriver.findElement(By.xpath("//*[@class='product-name' and contains(text(),'Blouse')]")))
                 .build().perform();
 
-        webDriver.findElement(By.xpath("//*[@id=\"center_column\"]/ul/li[2]/div/div[2]/div[2]/a[1]/span")).click();
+        webDriver.findElement(By.xpath("//*[text()='Add to cart']")).click();
 
         new WebDriverWait(webDriver, 8)
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@class=\"icon-ok\"]")));
